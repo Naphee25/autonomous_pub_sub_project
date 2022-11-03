@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Data IDs</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="../static/favicon.ico"/>
+	<link rel="stylesheet" type="text/css" href="../static/table/css/main.css">
+
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-table100">
+			<div class="wrap-table100">
+				<div class="table100">
+					<table >
+						<thead>
+							<tr class="table100-head">
+                                <!--<th class="column1 ">Index</th>-->
+								<th class="column2">ID</th>
+
+							</tr>
+						</thead>
+						<tbody>
+
+							{%for i in range(0, len)%}
+							<tr>
+								<!--<td class="column1">{{i}}</td>-->
+								<td class="column2 tooltip" onmouseout="outFunc()"">{{Data[i]}}<span class="tooltiptext">Copy to clipboard</span></td>
+							</tr>
+							{%endfor%}
+								
+								
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+
+		function outFunc() {
+			document.querySelectorAll('.tooltiptext')
+			.forEach(element => element.innerHTML = "Copy To Clipboad!");
+		}
+
+		document.querySelectorAll('.column2')
+			.forEach(e => e.addEventListener("click", function() {
+    		// Here, `this` refers to the element the event was hooked on
+			navigator.clipboard.writeText(this.childNodes[0].nodeValue);
+
+			document.querySelectorAll('.tooltiptext')
+			.forEach(element => element.innerHTML = "Copied To Clipboad!");
+		}));
+	</script>
+
+</body>
+</html>
